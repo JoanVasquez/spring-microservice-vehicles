@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import com.user.service.model.Motor;
 
-@FeignClient(name = "motor-service", url = "http://localhost:8003")
+@FeignClient(name = "motor-service")
 @RequestMapping("/motor")
 public interface MotorFeignClient {
 
