@@ -32,7 +32,7 @@ public class UserService {
 
 	@SuppressWarnings("unchecked")
 	public List<Car> getCars(int userId) {
-		List<Car> cars = this.restTemplate.getForObject("http://localhost:8080/car/user/" + userId, List.class);
+		List<Car> cars = this.restTemplate.getForObject("http://car-service/car/user/" + userId, List.class);
 		return cars;
 	}
 
