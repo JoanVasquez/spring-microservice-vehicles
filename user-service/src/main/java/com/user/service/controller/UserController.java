@@ -105,28 +105,32 @@ public class UserController {
 		return ResponseEntity.ok(result);
 	}
 
-	@SuppressWarnings("unused")
-	private ResponseEntity<Object> fallBackGetCars(@PathVariable("userId") int userId) {
-		return new ResponseEntity<Object>("The user: " + userId + "does not have any car available", HttpStatus.OK);
+	@SuppressWarnings({ "unused", "rawtypes", "unchecked" })
+	private ResponseEntity<List<Car>> fallBackGetCars(@PathVariable("userId") int userId, RuntimeException exception) {
+		return new ResponseEntity("The user: " + userId + "does not have any car available", HttpStatus.OK);
 	}
-	
-	@SuppressWarnings("unused")
-	private ResponseEntity<Object> fallBackGetMotors(@PathVariable("userId") int userId) {
-		return new ResponseEntity<Object>("The user: " + userId + "does not have any motor available", HttpStatus.OK);
+
+	@SuppressWarnings({ "unused", "unchecked", "rawtypes" })
+	private ResponseEntity<List<Motor>> fallBackGetMotors(@PathVariable("userId") int userId,
+			RuntimeException exception) {
+		return new ResponseEntity("The user: " + userId + "does not have any motor available", HttpStatus.OK);
 	}
-	
-	@SuppressWarnings("unused")
-	private ResponseEntity<Object> fallBackSaveCar(@PathVariable("userId") int userId, @RequestBody Car car) {
-		return new ResponseEntity<Object>("The user: " + userId + "does not have enough money", HttpStatus.OK);
+
+	@SuppressWarnings({ "unused", "rawtypes", "unchecked" })
+	private ResponseEntity<Car> fallBackSaveCar(@PathVariable("userId") int userId, @RequestBody Car car,
+			RuntimeException exception) {
+		return new ResponseEntity("The user: " + userId + "does not have enough money", HttpStatus.OK);
 	}
-	
-	@SuppressWarnings("unused")
-	private ResponseEntity<Object> fallBackSaveMotor(@PathVariable("userId") int userId, @RequestBody Motor motor) {
-		return new ResponseEntity<Object>("The user: " + userId + "does not have enough money", HttpStatus.OK);
+
+	@SuppressWarnings({ "unused", "rawtypes", "unchecked" })
+	private ResponseEntity<Motor> fallBackSaveMotor(@PathVariable("userId") int userId, @RequestBody Motor motor,
+			RuntimeException exception) {
+		return new ResponseEntity("The user: " + userId + "does not have enough money", HttpStatus.OK);
 	}
-	
-	@SuppressWarnings("unused")
-	private ResponseEntity<Object> fallBackGetVehicles(@PathVariable("userId") int userId) {
-		return new ResponseEntity<Object>("The user: " + userId + "does not have vehicles available", HttpStatus.OK);
+
+	@SuppressWarnings({ "unused", "rawtypes", "unchecked" })
+	private ResponseEntity<Map<String, Object>> fallBackGetVehicles(@PathVariable("userId") int userId,
+			RuntimeException exception) {
+		return new ResponseEntity("The user: " + userId + "does not have vehicles available", HttpStatus.OK);
 	}
 }
